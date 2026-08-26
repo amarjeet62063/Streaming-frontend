@@ -1,3 +1,5 @@
+import { cn } from "../lib/utils";
+
 function Input({
   label = "Input",
   placeholder = "Enter text...",
@@ -13,7 +15,10 @@ function Input({
       <input
         type={type}
         placeholder={placeholder}
-        className={`px-3 py-2 rounded-lg  text-black outline-none focus:bg-gray-50 duration-200 border border-gray-400 w-full ${className || ''}`}
+        className={cn(
+          "px-3 py-2 rounded-lg  text-black outline-none focus:bg-gray-50 duration-200 border border-gray-400 w-full",
+          className,
+        )}
         {...props}
       />
     </div>
