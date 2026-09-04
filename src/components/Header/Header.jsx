@@ -1,5 +1,6 @@
 import { Bell, Menu, Search, Upload, UserCircle } from "lucide-react";
 import { Container } from "../index";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -16,12 +17,9 @@ function Header() {
               <Menu size={22} />
             </button>
 
-            <a
-              href="/"
-              className="text-base font-bold tracking-tight sm:text-xl"
-            >
+            <Link to="/" className="text-lg font-bold text-gray-100">
               StreamForge
-            </a>
+            </Link>
           </div>
 
           {/* Responsive Search */}
@@ -65,13 +63,13 @@ function Header() {
             </button>
 
             {/* Profile */}
-            <button
-              type="button"
-              className="rounded-full p-1 transition hover:bg-gray-600 "
+            <Link
+              to="/login"
+              className="rounded-full p-2 transition hover:bg-gray-600 "
               aria-label="Profile"
             >
               <UserCircle size={24} />
-            </button>
+            </Link>
           </div>
         </div>
       </Container>

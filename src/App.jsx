@@ -1,12 +1,14 @@
-import { Button, Footer, Header, Input } from "./components/index";
+import { Outlet } from "react-router-dom";
+import { Footer, Header } from "./components/index";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-wrap content-between bg-gray-400">
       <div className="w-full block">
         <Header />
-        <Input label="Email" placeholder="Enter your email" type="email"  />
-        <Button />
+        <main>
+          <Outlet />
+        </main>
         <Footer />
       </div>
     </div>
