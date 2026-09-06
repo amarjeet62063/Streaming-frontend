@@ -4,10 +4,10 @@ import { useCurrentUser } from '../features/auth/authHooks'
 function Home() {
 const{data:data}=  useCurrentUser();
 
-console.log(data.data);
+
 
   return (
-    <div className="h-min w-md px-7 py-2">
+    <div className="h-auto w-auto px-7 py-2">
       <h1>
         <ul>
           Hii<li>{data.data.fullname.toUpperCase()}</li>

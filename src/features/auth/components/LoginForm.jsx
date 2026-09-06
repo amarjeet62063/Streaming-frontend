@@ -114,7 +114,7 @@ function LoginForm() {
       <Button
         type="submit"
         disabled={loginMutation.isPending}
-        className="w-full"
+        className="w-full px-6 py-3 rounded-2xl "
       >
         {loginMutation.isPending ? "Signing in..." : "Sign in"}
       </Button>

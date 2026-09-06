@@ -5,6 +5,7 @@ import App from "../App";
 import Login from "../pages/Login";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Home from "../components/Home";
+import Profile from "../pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
           {
             path: "/",
             element: <Home />,
+          },
+          {
+            path: "/profile",
+            element: <Profile />,
           },
         ],
       },

@@ -1,11 +1,15 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useCurrentUser } from "../features/auth/authHooks";
+import { Error, Loading } from "../components/index";
 
 function ProtectedRoute() {
-  const { data: user, isLoading, error } = useCurrentUser();
+  const { data: user, isLoading, error, refetch } = useCurrentUser();
+  if (error) {
+    return <Error onRetry={refetch} message={error.message} />;
+  }
 
   if (isLoading) {
-    return <div>Checking authentication...</div>;
+    return <Loading text="Authentication" />;
   }
 
   if (!user) {
