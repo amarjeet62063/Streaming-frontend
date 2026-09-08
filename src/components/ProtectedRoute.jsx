@@ -4,9 +4,7 @@ import { Error, Loading } from "../components/index";
 
 function ProtectedRoute() {
   const { data: user, isLoading, error, refetch } = useCurrentUser();
-  if (error) {
-    return <Error onRetry={refetch} message={error.message} />;
-  }
+ 
 
   if (isLoading) {
     return <Loading text="Authentication" />;
@@ -14,6 +12,9 @@ function ProtectedRoute() {
 
   if (!user) {
     return <Navigate to="/login" replace />;
+  }
+  if (error) {
+    return <Error onRetry={refetch} message={error.message} />;
   }
 
   return <Outlet />;

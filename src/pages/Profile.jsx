@@ -1,18 +1,30 @@
 import { Link } from "react-router-dom";
-import { UserCircle, Pencil, LogOut } from "lucide-react";
+import { UserCircle, Pencil } from "lucide-react";
 
-import { useCurrentUser, useLogout } from "../features/auth/authHooks";
+import { useCurrentUser } from "../features/auth/authHooks";
+import { useMyVideos } from "../features/videos/videoHooks";
+
 import { Loading } from "../components/index";
+import UserVideos from "../features/videos/components/UserVideos";
 
 function Profile() {
-  const { data: user, isLoading, isError } = useCurrentUser();
-  const logoutMutation = useLogout();
+  const {
+    data: user,
+    isLoading: isUserLoading,
+    isError: isUserError,
+  } = useCurrentUser();
 
-  if (isLoading) {
+  const { data: videosResponse } = useMyVideos();
+
+  const data = videosResponse?.data;
+
+  // Profile loading
+  if (isUserLoading) {
     return <Loading text="Loading profile..." />;
   }
 
-  if (isError || !user) {
+  // Profile error
+  if (isUserError || !user) {
     return (
       <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center">
         <div className="text-center">
@@ -29,22 +41,18 @@ function Profile() {
     );
   }
 
-  const handleLogout = () => {
-    logoutMutation.mutate();
-  };
-
   return (
-    <section className="min-h-[calc(100vh-4rem)] ">
-      <div >
+    <section className="min-h-[calc(100vh-4rem)]">
+      <div>
         {/* Profile Card */}
 
-        <div className="overflow-hidden l border border-gray-200 bg-white shadow-lg">
+        <div className="overflow-hidden border border-gray-200 bg-gray-300 shadow-lg">
           {/* Cover Image */}
 
           <div className="relative">
             {user?.data?.coverimage?.url && (
               <img
-                src={user?.data?.coverimage?.url}
+                src={user.data.coverimage.url}
                 alt="Cover"
                 className="h-48 w-full object-cover"
               />
@@ -53,9 +61,9 @@ function Profile() {
             {/* Avatar */}
 
             <div className="absolute -bottom-12 left-1/2 -translate-x-1/2">
-              {user?.data?.avatar ? (
+              {user?.data?.avatar?.url ? (
                 <img
-                  src={user?.data?.avatar?.url}
+                  src={user.data.avatar.url}
                   alt={user?.data?.username || "Profile"}
                   className="h-28 w-28 rounded-full border-4 border-white object-cover"
                 />
@@ -74,8 +82,6 @@ function Profile() {
           {/* Profile Header */}
 
           <div className="flex flex-col items-center gap-4 p-6 pt-20 sm:p-8 sm:pt-13">
-            {/* User Info */}
-
             <div className="text-center">
               <h1 className="text-2xl font-bold text-gray-900">
                 Username:- {user?.data?.username}
@@ -103,19 +109,15 @@ function Profile() {
                 Edit profile
               </Link>
 
-              <button
-                type="button"
-                onClick={handleLogout}
-                disabled={logoutMutation.isPending}
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg border border-gray-300 px-4 py-2.5 font-medium text-gray-700 transition hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-60"
-              >
-                <LogOut size={18} />
-
-                {logoutMutation.isPending ? "Logging out..." : "Logout"}
-              </button>
+              <div className="flex flex-1 cursor-default items-center justify-center gap-2 rounded-lg border border-gray-300 px-4 py-2.5 font-medium text-gray-900 transition hover:bg-gray-100">
+                My Videos ({data?.totalDocs ?? 0})
+              </div>
             </div>
           </div>
         </div>
+
+        {/* My Videos */}
+        <UserVideos />
       </div>
     </section>
   );
