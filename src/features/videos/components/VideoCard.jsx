@@ -48,13 +48,13 @@ function VideoCard({ video }) {
             {video.title}
           </Link>
 
-          <p className="mt-1 truncate text-sm text-gray-500">
+          <p className="mt-1 truncate text-lg text-gray-800">
             {video.owner?.username
               ? `@${video.owner.username}`
               : "Unknown user"}
           </p>
 
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-950">
             {video.views ?? 0} views
             {video.createdAt && (
               <>

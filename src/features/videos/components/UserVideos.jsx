@@ -14,6 +14,8 @@ function UserVideos() {
   } = useMyVideos(page);
 
   const data = videosResponse?.data;
+  console.log(data);
+  
 
   const videos = data?.docs || [];
   return (
