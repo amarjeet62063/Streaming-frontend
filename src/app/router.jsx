@@ -4,6 +4,7 @@ import App from "../App";
 
 import Login from "../pages/Login";
 import ProtectedRoute from "../components/ProtectedRoute";
+import PublicRoute from "../components/PublicRoute";
 import Home from "../components/Home";
 import Profile from "../pages/Profile";
 
@@ -12,9 +13,15 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/login",
-        element: <Login />,
+        element: <PublicRoute />,
+        children: [
+          {
+            path: "/login",
+            element: <Login />,
+          },
+        ],
       },
+
       {
         element: <ProtectedRoute />,
         children: [
