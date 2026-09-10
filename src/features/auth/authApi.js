@@ -19,7 +19,7 @@ export const logoutUser = async () => {
 };
 
 export const getCurrentUser = async () => {
-  const response = await api.get("/users/update-getcurrentuser");
+  const response = await api.get("/users/getcurrentuser");
 
   return response.data;
 };
