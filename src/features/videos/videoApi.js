@@ -16,8 +16,12 @@ export const getVideoById = async (videoId) => {
   return response.data;
 };
 
-export const getAllVideos = async () => {
-  const response = await api.get();
+export const getAllVideos = async (page) => {
+  const response = await api.get("/video/fetch-all-videos", {
+    params: {
+      page: page,
+    },
+  });
   return response.data;
 };
 
