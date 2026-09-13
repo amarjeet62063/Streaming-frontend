@@ -5,8 +5,9 @@ import App from "../App";
 import Login from "../pages/Login";
 import ProtectedRoute from "../components/ProtectedRoute";
 import PublicRoute from "../components/PublicRoute";
-import Home from "../components/Home";
+import Home from "../pages/Home";
 import Profile from "../pages/Profile";
+import Watch from "../pages/Watch";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
           {
             path: "/profile",
             element: <Profile />,
+          },
+          {
+            path: "/watch",
+            element: <Watch />,
           },
         ],
       },

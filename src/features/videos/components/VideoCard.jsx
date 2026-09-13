@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { MoreVertical, Play } from "lucide-react";
+import { Play } from "lucide-react";
 
 function VideoCard({ video }) {
   return (
     <article className="group min-w-0">
       {/* Thumbnail */}
       <Link
-        to={`/videos/${video._id}`}
+        to={`/watch?v=${video._id}`}
         className="relative block aspect-video overflow-hidden rounded-xl bg-gray-200"
       >
         {video?.thumbnail?.url ? (
@@ -38,7 +38,6 @@ function VideoCard({ video }) {
             </div>
           )}
         </div>
-
         {/* Details */}
         <div className="min-w-0 flex-1">
           <Link
@@ -64,15 +63,7 @@ function VideoCard({ video }) {
             )}
           </p>
         </div>
-
         {/* More */}
-        <button
-          type="button"
-          className="h-fit shrink-0 rounded-full p-1.5 text-gray-500 opacity-0 transition hover:bg-gray-100 group-hover:opacity-100"
-          aria-label="More options"
-        >
-          <MoreVertical size={20} />
-        </button>
       </div>
     </article>
   );

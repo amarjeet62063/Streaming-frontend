@@ -6,12 +6,13 @@ import {
   uploadVideo,
   updateVideo,
   deleteVideo,
+  getAllVideos,
 } from "./videoApi";
 
 export const useMyVideos = (page = 1) => {
   return useQuery({
     queryKey: ["myVideos", page],
-    queryFn:()=> getMyVideos(page),
+    queryFn: () => getMyVideos(page),
     placeholderData: (previousData) => previousData,
   });
 };
@@ -21,6 +22,13 @@ export const useVideo = (videoId) => {
     queryKey: ["video", videoId],
     queryFn: () => getVideoById(videoId),
     enabled: !!videoId,
+  });
+};
+
+export const useAllvideos = () => {
+  return useQuery({
+    queryKey: ["allVideos"],
+    queryFn: getAllVideos,
   });
 };
 

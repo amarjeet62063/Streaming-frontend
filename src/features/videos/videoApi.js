@@ -11,8 +11,13 @@ export const getMyVideos = async (page) => {
 };
 
 export const getVideoById = async (videoId) => {
-  const response = await api.get(`/videos/${videoId}`);
+  const response = await api.get(`/video/watch-video/${videoId}`);
 
+  return response.data;
+};
+
+export const getAllVideos = async () => {
+  const response = await api.get();
   return response.data;
 };
 
