@@ -26,8 +26,6 @@ export const useVideo = (videoId) => {
 };
 
 export const useAllvideos = (page = 1) => {
-  console.log(page);
-  
   return useQuery({
     queryKey: ["allVideos", page],
     queryFn: () => getAllVideos(page),
