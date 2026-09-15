@@ -26,7 +26,7 @@ export const getAllVideos = async (page) => {
 };
 
 export const uploadVideo = async (formData) => {
-  const response = await api.post("/videos", formData);
+  const response = await api.post("/video/uplode-video", formData);
 
   return response.data;
 };

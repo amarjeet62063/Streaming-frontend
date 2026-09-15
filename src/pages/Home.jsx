@@ -18,7 +18,6 @@ function Home() {
   } = useAllvideos(CurrentPage);
   const pagegination = videosResponse?.data;
   const videos = videosResponse?.data?.docs || [];
-  console.log(page);
 
   const goToPage = (pageNumber) => {
     if (pageNumber === 1) {
@@ -47,11 +46,11 @@ function Home() {
   }
 
   return (
-    <div>
+    <div className="pb-3 h-full">
       {videos.length === 0 ? (
         <p className="py-10 text-center text-gray-500">No videos found.</p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-2 mb-3 px-3 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {videos.map((video) => (
             <VideoCard key={video._id} video={video} />
           ))}

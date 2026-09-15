@@ -8,6 +8,7 @@ import PublicRoute from "../components/PublicRoute";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import Watch from "../pages/Watch";
+import Upload from "../pages/Upload";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
           {
             path: "/watch",
             element: <Watch />,
+          },
+          {
+            path: "/upload",
+            element: <Upload />,
           },
         ],
       },

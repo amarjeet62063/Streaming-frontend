@@ -49,13 +49,13 @@ function Header() {
           {/* Actions */}
 
           <div className="flex shrink-0 items-center gap-1">
-            <button
-              type="button"
+            <Link
+              to="/upload"
               className="hidden rounded-full p-2 transition hover:bg-gray-600 sm:block"
               aria-label="Upload video"
             >
               <Upload size={22} />
-            </button>
+            </Link>
 
             <button
               type="button"
