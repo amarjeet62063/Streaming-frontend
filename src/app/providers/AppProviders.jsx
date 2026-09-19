@@ -1,17 +1,27 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import OfflineIndicator from "../../components/OfflineIndicator";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: false,
+      retry: 1,
+      refetchOnReconnect: true,
       refetchOnWindowFocus: false,
+      networkMode: "online",
+    },
+    mutations: {
+      retry: 0,
+      networkMode: "online",
     },
   },
 });
 
 function AppProviders({ children }) {
   return (
-    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>
+      <OfflineIndicator />
+      {children}
+    </QueryClientProvider>
   );
 }
 

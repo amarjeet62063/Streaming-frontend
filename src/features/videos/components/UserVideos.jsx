@@ -1,5 +1,5 @@
 import { useMyVideos } from "../videoHooks";
-import VideoCard from "./VideoCard";
+import VideoCard from "../../../components/VideoCard";
 import { Loading, Error, Pagination } from "../../../components";
 import { useState } from "react";
 

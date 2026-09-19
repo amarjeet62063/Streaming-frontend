@@ -9,6 +9,7 @@ import Home from "../pages/Home";
 import Profile from "../pages/Profile";
 import Watch from "../pages/Watch";
 import Upload from "../pages/Upload";
+import CreatorProfile from "../features/creators/components/CreatorProfile";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
           {
             path: "/upload",
             element: <Upload />,
+          },
+          {
+            path: "/profile/:user_id",
+            element: <CreatorProfile />,
           },
         ],
       },

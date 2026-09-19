@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Loading, Pagination } from "../components";
-import VideoCard from "../features/videos/components/VideoCard";
+import VideoCard from "../components/VideoCard";
 import { useAllvideos } from "../features/videos/videoHooks";
 import { useNavigate, useParams } from "react-router-dom";
 

@@ -42,5 +42,6 @@ export const useCurrentUser = () => {
     queryKey: ["currentUser"],
     queryFn: getCurrentUser,
     retry: false,
+    staleTime: 5 * 60 * 1000,
   });
 };
