@@ -1,5 +1,9 @@
 import { useMutation, useQueries, useQueryClient } from "@tanstack/react-query";
-import { getCreatorProfile } from "./creatorApi";
+import {
+  getCreatorProfile,
+  getCreatorVideos,
+  getSubscriptionToggel,
+} from "./creatorApi";
 
 export const useCreatorProfile = (userId, page = 1) => {
   return useQueries({
@@ -15,5 +19,17 @@ export const useCreatorProfile = (userId, page = 1) => {
         enabled: Boolean(userId),
       },
     ],
+  });
+};
+
+export const useSubscriptionToggel = (userId) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: () => getSubscriptionToggel(userId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["creatorProfile"],
+      });
+    },
   });
 };
