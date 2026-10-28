@@ -17,8 +17,15 @@ export const useLogin = () => {
 };
 
 export const useRegister = () => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: registerUser,
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: ["currentUser"],
+      });
+    },
   });
 };
 

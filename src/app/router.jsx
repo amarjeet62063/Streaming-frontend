@@ -10,6 +10,7 @@ import Profile from "../pages/Profile";
 import Watch from "../pages/Watch";
 import Upload from "../pages/Upload";
 import CreatorProfile from "../features/creators/components/CreatorProfile";
+import Register from "../features/auth/components/RegisterForm";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
           {
             path: "/login",
             element: <Login />,
+          },
+          {
+            path: "/register",
+            element: <Register />,
           },
         ],
       },
